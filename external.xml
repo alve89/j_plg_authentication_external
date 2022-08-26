@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="3.1" type="plugin" group="authentication" method="upgrade">
+	<name>Authentication - External Script</name>
+	<author>Stefan Herzog</author>
+	<creationDate>July 2014</creationDate>
+	<copyright>Copyright (C) 2014. All rights reserved.</copyright>
+	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+	<authorEmail>joomla@die-herzogs.com</authorEmail>
+	<authorUrl>http://die-herzogs.com</authorUrl>
+	<version>1.0</version>
+	<languages>
+		<language tag="de-DE">de-DE.plg_authentication_external.ini</language>
+		<language tag="de-DE">de-DE.plg_authentication_external.sys.ini</language>
+	</languages>
+	<description>PLG_EXTERNAL_PLUGIN_DESCRIPTION
+		<![CDATA[
+		<br />
+		]]>
+		</description>
+	<files>
+		<filename plugin="external">external.php</filename>
+		<filename>index.html</filename>
+		<filename>functions.php</filename>
+		<filename>stuff.php</filename>
+		<folder>tmp</folder>
+	</files>
+
+	<config>
+		<fields name="params">
+			<fieldset name="PLG_EXTERNAL_TAB_BASIC">	
+				<field type="spacer" name="spacer_url" label="PLG_EXTERNAL_SPACER_URL_LABEL"
+				/>			
+				<field name="protocol" type="text"
+					description="PLG_EXTERNAL_FIELD_PROTOCOL"
+					label="PLG_EXTERNAL_FIELD_PROTOCOL_LABEL"
+					size="20"
+				/>
+				<field name="host" type="text"
+					description="PLG_EXTERNAL_FIELD_HOST"
+					label="PLG_EXTERNAL_FIELD_HOST_LABEL"
+					size="20"
+				/>
+				<field name="scriptname" type="text"
+					description="PLG_EXTERNAL_FIELD_SCRIPTNAME"
+					label="PLG_EXTERNAL_FIELD_SCRIPTNAME_LABEL"
+					size="20"
+				/>
+				<field type="spacer" name="&lt;hr/&gt;spacer_backend" label="PLG_EXTERNAL_SPACER_BACKEND_LABEL"
+				/>
+				<field 
+					name="radio_backend_access"
+					type="radio"
+					default="0"
+					label="PLG_EXTERNAL_RADIO_BACKEND_ACCESS_LABEL"
+					description="PLG_EXTERNAL_RADIO_BACKEND_ACCESS"
+				>
+					<option value="0">Nein</option>
+					<option value="1">Ja</option>
+				</field>
+				<field name="field_backend_access" type="text"
+					description="PLG_EXTERNAL_FIELD_BACKEND_ACCESS"
+					label="PLG_EXTERNAL_FIELD_BACKEND_ACCESS_LABEL"
+					size="20"
+				/>
+				<field name="value_backend_access" type="text"
+					description="PLG_EXTERNAL_VALUE_BACKEND_ACCESS"
+					label="PLG_EXTERNAL_VALUE_BACKEND_ACCESS_LABEL"
+					size="20"
+				/>
+				<field name="group_backend_access" type="usergroup"
+					description="PLG_EXTERNAL_GROUP_BACKEND_ACCESS"
+					label="PLG_EXTERNAL_GROUP_BACKEND_ACCESS_LABEL"
+					multiple="true"
+				/>
+				<field type="spacer" name="&lt;hr/&gt;spacer_table" label="PLG_EXTERNAL_SPACER_TABLE_LABEL"
+				/>
+				<field name="tablename" type="text"
+					description="PLG_EXTERNAL_FIELD_TABLENAME"
+					label="PLG_EXTERNAL_FIELD_TABLENAME_LABEL"
+					size="20"
+				/>
+				<field name="field_username" type="text"
+					description="PLG_EXTERNAL_FIELD_USERNAME"
+					label="PLG_EXTERNAL_FIELD_USERNAME_LABEL"
+					size="20"
+				/>
+				<field name="field_password" type="text"
+					description="PLG_EXTERNAL_FIELD_PASSWORD"
+					label="PLG_EXTERNAL_FIELD_PASSWORD_LABEL"
+					size="20"
+				/>		
+				<field name="field_first_name" type="text"
+					description="PLG_EXTERNAL_FIELD_FIRST_NAME"
+					label="PLG_EXTERNAL_FIELD_FIRST_NAME_LABEL"
+					size="20"
+				/>
+				<field name="field_last_name" type="text"
+					description="PLG_EXTERNAL_FIELD_LAST_NAME"
+					label="PLG_EXTERNAL_FIELD_LAST_NAME_LABEL"
+					size="20"
+				/>
+				<field name="field_email" type="text"
+					description="PLG_EXTERNAL_FIELD_EMAIL"
+					label="PLG_EXTERNAL_FIELD_EMAIL_LABEL"
+					size="20"
+				/>
+				<field name="field_salt" type="text"
+					description="PLG_EXTERNAL_FIELD_SALT"
+					label="PLG_EXTERNAL_FIELD_SALT_LABEL"
+					size="20"
+				/>	
+				<field name="pepper" type="text"
+					description="PLG_EXTERNAL_FIELD_PEPPER"
+					label="PLG_EXTERNAL_FIELD_PEPPER_LABEL"
+					size="20"
+				/>
+				<field name="encryption" type="textarea"
+					rows="10"
+					cols="40"
+					default="function encryptPassword($pw,$salt=NULL,$pepper=NULL)&#13;&#10;
+{&#13;&#10;
+$pw = md5($pw . $salt);&#13;&#10;
+return $pw;&#13;&#10;
+}"
+					description="PLG_EXTERNAL_FIELD_ENCRYPTION"
+					label="PLG_EXTERNAL_FIELD_ENCRYPTION_LABEL"
+				/>
+			</fieldset>
+			<fieldset name="PLG_EXTERNAL_TAB_SECURITY">
+				<field name="phpuser" type="text"
+					default="NULL"
+					description="PLG_EXTERNAL_FIELD_PHP_USER"
+					label="PLG_EXTERNAL_FIELD_PHP_USER_LABEL"
+					size="20"
+				/>
+				<field name="phpPW" type="text"
+					default="NULL"
+					description="PLG_EXTERNAL_FIELD_PHP_PASSWORD"
+					label="PLG_EXTERNAL_FIELD_PHP_PASSWORD_LABEL"
+					size="20"
+				/>
+				<field name="htaccessuser" type="text"
+					default="NULL"
+					description="PLG_EXTERNAL_FIELD_HTACCESS_USER"
+					label="PLG_EXTERNAL_FIELD_HTACCESS_USER_LABEL"
+					size="20"
+				/>
+				<field name="htaccessPW" type="text"
+					default="NULL"
+					description="PLG_EXTERNAL_FIELD_HTACCESS_PASSWORD"
+					label="PLG_EXTERNAL_FIELD_HTACCESS_PASSWORD_LABEL"
+					size="20"
+				/>
+			</fieldset>
+
+		</fields>
+	</config>
+</extension>
